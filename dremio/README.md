@@ -3,14 +3,40 @@
 # Dremio Community Edition 
 
 This is a docker image for [Dremio](https://github.com/dremio/dremio-oss). 
-It is based on CentOS.
+It is based on CentOS.  In addition to the Dremio Server, the vnstat daemon
+is configured to report on network traffic to Dremio.
 
-For more details and documentation: https://www.dremio.com/
+For more details and documentation on Dremio go to their
+[website](https://www.dremio.com/).
 
-### Usage
+### Usage to build and deploy
 ```
 cd image
 make build
 cd ../compose
 ./run.sh
+```
+
+### Usage to view data transfers
+```
+$ docker exec -it dezota_dremio_1 vnstat
+Database updated: Sat Jun  9 06:51:08 2018
+
+   eth0 since 06/09/18
+
+          rx:  72.65 MiB      tx:  3.64 MiB      total:  76.29 MiB
+
+   monthly
+                     rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+       Jun '18     72.65 MiB |    3.64 MiB |   76.29 MiB |    0.87 kbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated       260 MiB |      10 MiB |     270 MiB |
+
+   daily
+                     rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+         today     72.65 MiB |    3.64 MiB |   76.29 MiB |   25.34 kbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated       252 MiB |      10 MiB |     262 MiB |
 ```
