@@ -22,7 +22,7 @@ cd ../compose
 ```
 
 ### Get started
-Go to http://<your_hostname>:9047
+Go to https://<your_hostname>:9047
 
 The first time you access the website, it will prompt you to create an account.  You have an
 option to create a sample data source and setup additional data sources. 
