@@ -20,6 +20,13 @@ cd ../compose
 ./run.sh
 ```
 
+### Get started
+Go to http://<your_hostname>:9047
+
+The first time you access the website, it will prompt you to create an account.  You have an
+option to create a sample data source and setup additional data sources. 
+Enjoy!
+
 ### Usage to view data transfers
 ```
 $ docker exec -it dezota_dremio_1 vnstat
