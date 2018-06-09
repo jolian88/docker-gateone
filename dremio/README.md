@@ -13,11 +13,23 @@ node where execution and coordination happens on the same node.
 For more details and documentation on Dremio go to their
 [website](https://www.dremio.com/).
 
-### Usage to build and deploy
+### Usage to build and deploy Dremio standalone
 ```
 cd image
 make build
-cd ../compose
+cd ../compose-standalone
+./run.sh
+```
+
+### Usage to build and deploy Dremio with an NGINX reverse proxy via Traefik
+This allows for Traefik to use Let's Encrypt to generate a valid
+certificate, keeping the core services behind the firewall, and allow
+external access to the web interface.
+
+```
+cd image
+make build
+cd ../compose-traefik
 ./run.sh
 ```
 

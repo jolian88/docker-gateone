@@ -1,0 +1,40 @@
+version: "2"
+
+networks:
+  proxy:
+    external: true
+        
+services:
+  revproxy:
+    image: nginx
+    restart: always
+    labels:
+      - traefik.backend=revproxy
+      - traefik.frontend.rule=Host:dremio.dzhost.me
+      - traefik.docker.network=proxy
+      - traefik.port=80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - proxy
+
+  dremio:
+    restart: always
+    image: dezota/dremio-oss:2.0.5
+    hostname: dremio
+    volumes:
+      - ./dremio.conf:/opt/dremio/conf/dremio.conf:ro
+      - ./dremio-env:/opt/dremio/conf/dremio-env:ro
+#      - ./certs:/etc/certs:ro
+      - dremio_data:/var/lib/dremio
+    ports:
+      - "9047:9047"   # UI (HTTP)
+      - "31010:31010" # ODBC/JDBC clients
+      - "2181:2181"   # ZooKeeper
+      - "45678:45678" # Inter-node communication
+    networks:
+      - proxy
+
+volumes:
+  dremio_data:
+  
