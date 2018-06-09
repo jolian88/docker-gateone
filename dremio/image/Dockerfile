@@ -2,7 +2,7 @@ FROM centos:latest
 MAINTAINER bholman@dezota.com
 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    && yum install -y nano cronie wget sudo lsof strace htop joe vnstat iftop initscripts; yum clean all
+    && yum install -y nano cronie wget which sudo lsof strace htop joe vnstat iftop initscripts; yum clean all
 
 RUN useradd -ms /bin/bash  dremio
 
