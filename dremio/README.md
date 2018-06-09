@@ -1,4 +1,4 @@
-![image](https://www.dezota.com/dezota_logo_sm.png)
+![image](https://github.com/Dezota/dockerfiles/raw/master/dezota_logo_sm.png)
 
 # Dremio Community Edition 
 
