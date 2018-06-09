@@ -22,7 +22,7 @@ cd ../compose-standalone
 ```
 
 ### Usage to build and deploy Dremio with an NGINX reverse proxy via Traefik
-This allows for Traefik to use Let's Encrypt to generate a valid
+This allows for [Traefik](https://traefik.io/) to use Let's Encrypt to generate a valid
 certificate, keeping the core services behind the firewall, and allow
 external access to the web interface.
 
