@@ -4,7 +4,10 @@
 
 This is a docker image for [Dremio](https://github.com/dremio/dremio-oss). 
 It is based on CentOS.  In addition to the Dremio Server, the vnstat daemon
-is configured to report on network traffic to Dremio.
+is configured to report on network traffic to Dremio.  The compose directory
+contains the default dremio.conf and dremio-env files.  You can customize
+these for cluster deployments but out of the box it creates a single node
+where execution and coordination happens on the same node.
 
 For more details and documentation on Dremio go to their
 [website](https://www.dremio.com/).
