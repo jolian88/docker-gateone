@@ -1,0 +1,26 @@
+version: "2"
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
+
+services:
+  redash:
+    restart: always
+    image: dezota/redash:4.0.1
+    labels:
+      - traefik.backend=redash
+      - traefik.frontend.rule=Host:redash.dezota.com
+      - traefik.docker.network=proxy
+      - traefik.port=80
+    environment:
+      - BASE_URL=https://redash.dezota.com
+      - GOOGLE_CLIENT_ID=
+      - GOOGLE_CLIENT_SECRET=
+      - GMAIL_ADDR=
+      - GMAIL_PASSWD=
+    networks:
+      - internal
+      - proxy
