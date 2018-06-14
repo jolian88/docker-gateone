@@ -3,23 +3,31 @@
 # Redash Standalone Image
 
 This is a docker image for [Redash](https://github.com/getredash/redash). 
-It is based on Ubuntu 18.04.  
+It is based on Ubuntu 18.04. Unlike the image from Redash, it doesn't
+require any external services.  It includes Redis and Postgresql for backend
+services, it uses NGINX for a reverse proxy of Redash.  It is configured to
+use Postfix to send mail.
 
 For more details and documentation on Redash go to their
 [website](https://www.redash.io/).
 
 ### Environmental Variables 
 #### Set this if your base url is different than the default hostname
+```
 BASE_URL=https://redash.dezota.com
+```
 
 #### Set these to use [Google Single Sign-on](https://redash.io/help/open-source/admin-guide/google-developer-account-setup)
+```
 GOOGLE_CLIENT_ID 
 GOOGLE_CLIENT_SECRET
+```
 
 #### Set these to have your Gmail account send mail on behalf of Redash
+```
 GMAIL_ADDR - Gmail address
 GMAIL_PASSWD - Password for Gmail Account
-
+```
 ### Usage to build and deploy Redash standalone
 ```
 cd image
