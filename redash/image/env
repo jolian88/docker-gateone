@@ -3,3 +3,4 @@ export REDASH_REDIS_URL=redis://localhost:6379/0
 export REDASH_DATABASE_URL="postgresql:///redash"
 export REDASH_MAIL_SERVER="localhost"
 export REDASH_MAIL_PORT="25" 
+export REDASH_ADDITIONAL_QUERY_RUNNERS=redash.query_runner.python,redash.query_runner.dremio_odbc

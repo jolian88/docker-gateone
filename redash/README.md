@@ -2,14 +2,9 @@
 
 # Redash Standalone Image
 
-This is a docker image for [Redash](https://github.com/getredash/redash). 
-It is based on Ubuntu 18.04. Unlike the image from Redash, it doesn't
-require any external services.  It includes Redis and Postgresql for backend
-services, it uses NGINX for a reverse proxy of Redash.  It is configured to
-use Postfix to send mail.
+This is a docker image for [Redash](https://github.com/getredash/redash). It is based on Ubuntu 18.04. Unlike the image from Redash, it doesn't require any external services.  It includes Redis and Postgresql for backend services, it uses NGINX for a reverse proxy of Redash.  It is configured to use Postfix to send mail. **Unique to this image is support for Dremio as a data source** with the [Dezota-developed driver](https://github.com/Dezota/DremioDSforRedash).
 
-For more details and documentation on Redash go to their
-[website](https://www.redash.io/).
+For more details and documentation on Redash go to their [website](https://www.redash.io/).
 
 ### Environmental Variables 
 #### Set this if your base url is different than the default hostname
@@ -36,9 +31,7 @@ cd ../compose-standalone
 ./run.sh
 ```
 ### Usage to build and deploy Redash with an NGINX reverse proxy via Traefik
-This allows for [Traefik](https://traefik.io/) to use Let's Encrypt to generate a valid
-certificate, keeping the core services behind the firewall, and allow
-external access to the web interface.
+This allows for [Traefik](https://traefik.io/) to use Let's Encrypt to generate a valid certificate, keeping the core services behind the firewall, and allow external access to the web interface.
 
 ```
 cd image

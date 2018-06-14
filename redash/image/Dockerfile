@@ -81,6 +81,16 @@ RUN newaliases
 COPY env $REDASH_BASE_PATH/.env
 COPY run.sh /run.sh
 
+# Added ODBC Support for Dremio
+RUN apt-get install -y alien unixodbc unixodbc-dev && \
+    wget https://download.dremio.com/odbc-driver/1.3.19.1052/dremio-odbc-1.3.19.1052-1.x86_64.rpm && \
+    alien -i --scripts dremio-odbc-1.3.19.1052-1.x86_64.rpm && \
+    rm -f dremio-odbc-1.3.19.1052-1.x86_64.rpm && \
+    pip install pyodbc pandas && \
+    wget -O $REDASH_BASE_PATH/current/redash/query_runner/dremio_odbc.py "https://raw.githubusercontent.com/Dezota/DremioDSforRedash/master/dremio_odbc.py" && \
+    wget -O $REDASH_BASE_PATH/current/client/dist/images/db-logos/dremio_odbc.png "https://raw.githubusercontent.com/Dezota/DremioDSforRedash/master/dremio_odbc.png" && \
+    wget -O $REDASH_BASE_PATH/current/client/app/assets/images/db-logos/dremio_odbc.png "https://raw.githubusercontent.com/Dezota/DremioDSforRedash/master/dremio_odbc.png"
+
 RUN touch /firstime && \
     chmod +x /run.sh && \
     apt-get -y clean && \

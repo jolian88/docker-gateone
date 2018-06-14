@@ -6,7 +6,7 @@ build:
 	docker build -t dezota/redash:4.0.1 .
 
 run: build
-	docker run -ti --privileged -p 80:80 dezota/redash:4.0.1 
+	docker run -ti --privileged -p 80:80 -v ./mnt:/mnt dezota/redash:4.0.1
 
 detach: build
 	docker run -d --privileged -p 80:80 dezota/redash:4.0.1
