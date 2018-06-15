@@ -9,7 +9,7 @@ networks:
 services:
   redash:
     restart: always
-    image: dezota/redash:4.0.1
+    image: dezota/redash:latest
     labels:
       - traefik.backend=redash
       - traefik.frontend.rule=Host:redash.dezota.com

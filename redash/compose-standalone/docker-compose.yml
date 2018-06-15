@@ -3,7 +3,7 @@ version: "2"
 services:
   redash:
     restart: always
-    image: dezota/redash:4.0.1
+    image: dezota/redash:latest
     environment:
       - BASE_URL=https://redash.dezota.com
       - GOOGLE_CLIENT_ID=
