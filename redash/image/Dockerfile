@@ -81,7 +81,7 @@ RUN newaliases
 COPY env $REDASH_BASE_PATH/.env
 COPY run.sh /run.sh
 
-# Added ODBC Support for Dremio
+# Added ODBC Support for Dremio with updated Dezota Driver
 RUN apt-get install -y alien unixodbc unixodbc-dev && \
     wget https://download.dremio.com/odbc-driver/1.3.19.1052/dremio-odbc-1.3.19.1052-1.x86_64.rpm && \
     alien -i --scripts dremio-odbc-1.3.19.1052-1.x86_64.rpm && \
