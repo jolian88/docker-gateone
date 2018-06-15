@@ -91,6 +91,9 @@ RUN apt-get install -y alien unixodbc unixodbc-dev && \
     wget -O $REDASH_BASE_PATH/current/client/dist/images/db-logos/dremio_odbc.png "https://raw.githubusercontent.com/Dezota/DremioDSforRedash/master/dremio_odbc.png" && \
     wget -O $REDASH_BASE_PATH/current/client/app/assets/images/db-logos/dremio_odbc.png "https://raw.githubusercontent.com/Dezota/DremioDSforRedash/master/dremio_odbc.png"
 
+# Added support for Snowflake Data Source
+RUN pip install snowflake-connector-python
+
 RUN touch /firstime && \
     chmod +x /run.sh && \
     apt-get -y clean && \
