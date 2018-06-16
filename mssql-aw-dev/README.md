@@ -14,6 +14,7 @@ Chang3M3R1ghtN0w
 SA_PASSWORD="MyNewPassword"
 ```
 #### Build Yourself
+```
 git clone https://github.com/Dezota/dockerfiles.git
 cd mssql-aw-dev
 make build
