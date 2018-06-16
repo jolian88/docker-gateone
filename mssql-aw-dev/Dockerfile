@@ -48,8 +48,8 @@ RUN chmod +x /run.sh && \
     mkdir /backups
 
 # Install AdventureWorks demo database    
-# wget -O /backups/AdventureWorksDW2016_EXT.bak "https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2016_EXT.bak"
-COPY AdventureWorksDW2016_EXT.bak /backups/AdventureWorksDW2016_EXT.bak
+RUN wget -O /backups/AdventureWorksDW2016_EXT.bak "https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2016_EXT.bak"
+#COPY AdventureWorksDW2016_EXT.bak /backups/AdventureWorksDW2016_EXT.bak
 
 RUN systemctl start mssql-server && \
     sleep 30 && \
