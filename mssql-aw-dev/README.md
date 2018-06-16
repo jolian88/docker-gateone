@@ -2,7 +2,7 @@
 
 # Fully configured MSSQL Server for Linux with AdventureWorks test database
 
-This is a docker image for [MSSQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-linux-2017). It is based on Ubuntu 16.04. It is fully configured with Full Text Search, SQL Agent, and SSIS.  It also includes the full [AdventureWorks 2016 Data Warehouse Database](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) database pre-installed. As a result, the image is around 5GB in size.
+This is a docker image for [MSSQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-linux-2017). It is based on Ubuntu 16.04. It is fully configured with Full Text Search, SQL Agent, and SSIS.  It also includes the full [AdventureWorks 2016 Data Warehouse Database](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) pre-installed. As a result, the image is around 5GB in size.
 
 #### Default 'sa' Password
 ```
