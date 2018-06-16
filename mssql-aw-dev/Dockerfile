@@ -57,10 +57,10 @@ RUN systemctl start mssql-server && \
     rm -f /backups/AdventureWorksDW2016_EXT.bak
 
 # Install who_is_active for SQL Operations Studio plugin
-RUN systemctl start mssql-server && \
-    apt-get -y install unzip && \
-    wget http://whoisactive.com/downloads/who_is_active_v11_30.zip && \
-    unzip who_is_active_v11_30.zip && \
-    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Chang3M3R1ghtN0w' -i who_is_active_v11_30.sql
+#RUN systemctl start mssql-server && \
+#    apt-get -y install unzip && \
+#    wget http://whoisactive.com/downloads/who_is_active_v11_30.zip && \
+#    unzip who_is_active_v11_30.zip && \
+#    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Chang3M3R1ghtN0w' -i who_is_active_v11_30.sql
 
 CMD ["/run.sh"]
