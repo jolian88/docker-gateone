@@ -6,10 +6,10 @@ build:
 	docker build -t dezota/openresty:latest .
 
 run: build
-	docker run -ti --privileged -p 8585:80 dezota/openresty:latest
+	docker run -ti --privileged -p 80:80 dezota/openresty:latest
 
 detach: build
-	docker run -d --privileged -p 8585:80 dezota/openresty:latest
+	docker run -d --privileged -p 80:80 dezota/openresty:latest
 
 clean:
 	docker ps -aq --no-trunc | xargs docker stop
