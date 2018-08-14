@@ -23,7 +23,7 @@ RUN adduser --system --no-create-home --disabled-login --gecos "" redash
 
 ENV REDASH_BASE_PATH=/opt/redash
 ENV REDASH_BRANCH="master"
-ENV REDASH_VERSION=4.0.1
+ENV REDASH_VERSION=5.0.0-beta
 ENV LATEST_URL="https://github.com/getredash/redash/archive/v${REDASH_VERSION}.tar.gz"
 ENV VERSION_DIR="$REDASH_BASE_PATH/redash-${REDASH_VERSION}"
 ENV REDASH_TARBALL=/tmp/redash.tar.gz
