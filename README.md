@@ -8,3 +8,15 @@ build:
  context: <url-to-this-repo>
 ```
 In the Docker compose file used by consumers
+
+## From Dezota/dockerfiles:
+
+This is a docker image for the [GateOne](https://github.com/liftoff/GateOne) HTML5 web-based terminal emulator and SSH client.  The offical automated [build](https://hub.docker.com/r/liftoff/gateone/) on Docker Hub no longer works due to some mismatched Python dependencies. This image corrects these errors.
+
+#### Build Yourself
+```
+git clone <this-repo-url>
+make build
+make run
+```
+
