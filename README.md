@@ -1,10 +1,10 @@
-![image](https://github.com/Dezota/dockerfiles/raw/master/dezota_logo_sm.png)
+# GateOne Updated Dockerfile
 
-# Dezota Docker Files
+This is a fork of https://github.com/Dezota/dockerfiles
 
-[Dezota](https://www.dezota.com/) is a data analytics consulting company. 
-
-These are Dockerfiles to build relevant images as well as Compose files to
-appropriately setup the related images.
-
-
+Specifically trimmed down to include only the GateOne dockerfiles so they can be more easily referenced with a simple
+```
+build:
+ context: <url-to-this-repo>
+```
+In the Docker compose file used by consumers
