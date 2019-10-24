@@ -10,8 +10,9 @@ jobs:
 
     steps:      
     - uses: actions/checkout@v1
+    - name: Configure environment
+      run: branch_name=$(echo $GITHUB_REF | sed -e "s/^refs\/tags\/v/")
+      
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jolian88/gateone:$branch_name
-      env: 
-       branch_name: ${{ $(echo github.ref) }}
+      run: docker build . --file Dockerfile --tag jolian88/gateone:${{branch_name}}
       
