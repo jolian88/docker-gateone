@@ -36,8 +36,10 @@ RUN mkdir -p /gateone/logs && \
     git clone $GATEONE_REPO_URL && \
     cd GateOne && \
     python setup.py install && \
-    cp docker/update_and_run_gateone.py /usr/local/bin/update_and_run_gateone && \
-    cp docker/60docker.conf /etc/gateone/conf.d/60docker.conf
+    cp docker/update_and_run_gateone.py /usr/local/bin/update_and_run_gateone
+
+# Use our own GateOne custom configuration file rather than the one from the cloned repo
+COPY 60docker.conf /etc/gateone/conf.d/60docker.conf
 
 # This ensures our configuration files/dirs are created:
 RUN /usr/local/bin/gateone --configure \
