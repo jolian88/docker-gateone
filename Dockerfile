@@ -53,4 +53,6 @@ RUN chmod +x /run.sh
 
 EXPOSE 8022
 
-CMD ["/run.sh"]
+ENTRYPOINT ["gateone"]
+
+CMD ["--log_file_prefix=/gateone/logs/gateone.log"]
