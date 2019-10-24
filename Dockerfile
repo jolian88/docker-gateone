@@ -55,6 +55,6 @@ RUN rm -f /etc/gateone/ssl/key.pem && \
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-EXPOSE 8000
+EXPOSE 8022
 
 CMD ["/run.sh"]
