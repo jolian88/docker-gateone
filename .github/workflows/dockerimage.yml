@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Configure environment variables
-      run: BRANCH_NAME=$(echo $GITHUB_REF | sed -e "s/^refs\/tags\//")
+      run: BRANCH_NAME=$(echo $GITHUB_REF | sed -e "s/^refs\/tags\/v//")
           
     - uses: actions/checkout@v1
     - name: Build the Docker image
