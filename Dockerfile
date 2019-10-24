@@ -1,31 +1,27 @@
-FROM ubuntu:18.04
-MAINTAINER Brian Holman <bholman@dezota.com>
+FROM alpine:latest
+MAINTAINER https://github.com/jolian88
 
 ENV GATEONE_REPO_URL https://github.com/liftoff/GateOne.git
 
 # Ensure everything is up-to-date
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update --fix-missing && apt-get -y upgrade
+RUN apk update
 
 # Install dependencies
-RUN apt-get -y \
-    install python-pip \
-    python-setuptools \
-    python-mutagen \
-    python-pam \
+RUN apk add --update \
+    python \
     python-dev \
+    py-pip \
+    build-base \
     git \
     dtach \
-    telnet \
-    libreadline-dev \
-    libncurses-dev \
-    libpam-pwdfile \
+    busybox-extras \
+	libffi-dev \
+	readline \
     openssh-client && \
-    apt-get -y clean && \
-    apt-get -q -y autoremove
+	rm -rf /var/cache/apk/*
     
 RUN pip install tornado==4.5.3
-RUN pip install --upgrade futures cssmin slimit psutil readline
+RUN pip install --upgrade futures cssmin slimit psutil
 
 # Create the necessary directories, clone the repo, and install everything
 RUN mkdir -p /gateone/logs && \
@@ -33,7 +29,7 @@ RUN mkdir -p /gateone/logs && \
     mkdir -p /etc/gateone/conf.d && \
     mkdir -p /etc/gateone/ssl && \
     cd /gateone && \
-    git clone $GATEONE_REPO_URL && \
+    git clone --depth 1 $GATEONE_REPO_URL  && \
     cd GateOne && \
     python setup.py install && \
     cp docker/update_and_run_gateone.py /usr/local/bin/update_and_run_gateone
@@ -42,8 +38,8 @@ RUN mkdir -p /gateone/logs && \
 COPY 60docker.conf /etc/gateone/conf.d/60docker.conf
 
 # This ensures our configuration files/dirs are created:
-RUN /usr/local/bin/gateone --configure \
-    --log_file_prefix="/gateone/logs/gateone.log"
+RUN gateone --configure \
+   --log_file_prefix="/gateone/logs/gateone.log"
 
 # Remove the auto-generated key/certificate so that a new one gets created the
 # first time the container is started:
