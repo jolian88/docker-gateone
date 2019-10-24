@@ -48,9 +48,8 @@ RUN rm -f /etc/gateone/ssl/key.pem && \
     rm -f /gateone/logs/* 
 # (We don't want everyone using the same SSL key/certificate)
 
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
-
 EXPOSE 8022
 
-CMD ["/run.sh"]
+ENTRYPOINT ["gateone"]
+
+CMD ["--log_file_prefix=/gateone/logs/gateone.log"]
