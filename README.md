@@ -1,22 +1,14 @@
-# GateOne Updated Dockerfile
+# GateOne Alpine-based Dockerfile
 
-This is a fork of https://github.com/Dezota/dockerfiles
+This reposistory contains a Dockerfile and related configuration files to build a [GateOne](https://github.com/liftoff/GateOne) docker image.
 
-Specifically trimmed down to include only the GateOne dockerfiles so they can be more easily referenced with a simple
-```
-build:
- context: <url-to-this-repo>
-```
-In the Docker compose file used by consumers
+## GateOne
 
-## From Dezota/dockerfiles:
-
-This is a docker image for the [GateOne](https://github.com/liftoff/GateOne) HTML5 web-based terminal emulator and SSH client.  The offical automated [build](https://hub.docker.com/r/liftoff/gateone/) on Docker Hub no longer works due to some mismatched Python dependencies. This image corrects these errors.
+This is a docker image for the [GateOne](https://github.com/liftoff/GateOne) HTML5 web-based terminal emulator and SSH client.  The offical automated [build](https://hub.docker.com/r/liftoff/gateone/) on DockerHub no longer works due to some mismatched Python dependencies. This image corrects these errors and contains other optimisation like being based on the Alpine base image for a smaller overall size.
 
 #### Build Yourself
 ```
 git clone <this-repo-url>
-make build
-make run
+docker build -t docker-gateone
 ```
 
