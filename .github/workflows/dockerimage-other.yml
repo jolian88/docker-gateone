@@ -1,0 +1,20 @@
+name: Docker Image CI [other branches]
+
+on:
+  push:
+    branches-ignore:
+      - 'master'      # Ignore workflow when pushing to master or develop branches
+      - 'develop'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:      
+    - uses: actions/checkout@v1
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag jolian88/gateone:other-branch
+      
