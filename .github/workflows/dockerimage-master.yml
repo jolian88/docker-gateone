@@ -7,14 +7,20 @@ on:
       - develop
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
-    steps:      
+    steps:
     - uses: actions/checkout@v1
+    
+    - name: Set Repo Branch Name
+      run: branch_name = $(echo $GITHUB_REF | sed -e "s/^refs\/heads\///")
       
     - name: Build the Docker image
-      run: branch_name=$(echo $GITHUB_REF | sed -e "s/^refs\/heads\///") && docker build . --file Dockerfile --tag jolian88/gateone:$branch_name
+      run:  docker build . --file Dockerfile --tag jolian88/gateone:$branch_name
       
+    - name: Log in to DockerHub
+      run: docker login -u ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+    
+    - name: Publish image to DockerHub
+      run: docker push jolian88/gateone:$branch_name
