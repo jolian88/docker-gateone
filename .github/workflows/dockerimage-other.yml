@@ -7,14 +7,19 @@ on:
       - 'develop'
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
+    env: 
+      TAG_NAME: 'jolian88/gateone:other-branch'
 
     steps:      
-    - uses: actions/checkout@v1
-      
+    - uses: actions/checkout@v1 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jolian88/gateone:other-branch
+      run: docker build . --file Dockerfile --tag ${{ TAG_NAME }}
+    
+    - name: Log in to DockerHub
+      run: docker login -u ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+    
+    - name: Publish image to DockerHub
+      run: docker push ${{ TAG_NAME }}
       
